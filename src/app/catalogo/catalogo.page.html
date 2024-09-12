@@ -1,26 +1,26 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Catálogo de Roupas</ion-title>
+<<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Catálogo</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-grid>
     <ion-row>
+      <!-- Certifique-se de que todos os elementos estejam corretamente fechados -->
       <ion-col size="12" size-md="6" *ngFor="let product of products">
         <ion-card>
-          <ion-img [src]="product.image"></ion-img>
+          <img [src]="product.imagem" alt="{{ product.nome }}">
           <ion-card-header>
-            <ion-card-title>{{ product.name }}</ion-card-title>
+            <ion-card-title>{{ product.nome }}</ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <p>Preço: R$ {{ product.price.toFixed(2) }}</p>
-            <ion-button expand="block" color="primary">
-              Adicionar ao carrinho
-            </ion-button>
+            {{ product.descricao }}
           </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
+
+

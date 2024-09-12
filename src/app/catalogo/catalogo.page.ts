@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HomePage } from '../home/home.page'; // Corrija o caminho, se necessário
 
 @Component({
   selector: 'app-catalogo',
@@ -7,6 +6,25 @@ import { HomePage } from '../home/home.page'; // Corrija o caminho, se necessár
   styleUrls: ['./catalogo.page.scss'],
 })
 export class CatalogoPage {
-  constructor() {}
+  products = [
+    {
+      nome: 'Vestido',
+      descricao: 'Vestido de algodão 100%, disponível em várias cores.',
+      imagem: 'assets/images/Vverde.jfif' // Imagem do vestido
+    
+    },
+    {
+      nome: 'Calça',
+      descricao: 'Calça jeans pantalona.',
+      imagem: 'assets/images/calca.jfif' // Imagem da calça
+    },
+    {
+      nome: 'Tênis',
+      descricao: 'Tênis esportivo confortável e estiloso.',
+      imagem: 'assets/images/saia.jfif' // Imagem do tênis
+    }
+  ];
 }
+
+
 

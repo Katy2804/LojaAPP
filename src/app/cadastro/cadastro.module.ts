@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
 
-import { CatalogoPage } from './catalogo.page';
-import { CatalogoPageRoutingModule } from './catalogo-routing.module';
+import { CadastroPageRoutingModule } from './cadastro-routing.module';
+
+import { CadastroPage } from './cadastro.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CatalogoPageRoutingModule
+    CadastroPageRoutingModule
   ],
-  declarations: [CatalogoPage]
+  declarations: [CadastroPage]
 })
-export class CatalogoPageModule {}
-
+export class CadastroPageModule {}
