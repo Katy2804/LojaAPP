@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+echo 'iniciando o checkout'
+                git 'https://github.com/Katy2804/LojaAPP.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+               
+                sh 'npm install'
+                sh 'npm run build'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                
+                sh 'npm test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                script {
+
+                    // 3. Deploy em Kubernetes
+                    withCredentials([string(credentialsId: 'KUBECONFIG_ID', variable: 'KUBECONFIG_PATH')]) {
+                        sh 'kubectl apply -f deployment.yaml'
+                    }
+
+                    // 4. Deploy em Docker
+                    sh '''
+                    docker login -u usuario -p senha
+                    docker build -t sua_imagem:versao .
+                    docker run -d --name nome_container -p 80:80 sua_imagem:versao
+                    '''
+                    
+                }
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Deploy realizado com sucesso!'
+        }
+        failure {
+            echo 'Ocorreu um erro durante o deploy.'
+        }
+    }
+}
